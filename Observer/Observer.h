@@ -15,7 +15,7 @@ public:
     virtual void onFatalError(const std::string& message) {}
 };
 
-class Observed
+class Subject
 {
     std::vector<std::weak_ptr<Observer>> observers_;
 public:
@@ -23,4 +23,11 @@ public:
     void warning(const std::string& message) const;
     void error(const std::string& message) const;
     void fatalError(const std::string& message) const;
+};
+
+class WarningObs : public Observer
+{
+public:
+    WarningObs(Subject* subj);
+    void onWarning(const std::string& message) override;
 };
