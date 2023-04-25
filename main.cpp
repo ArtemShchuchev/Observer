@@ -37,8 +37,14 @@ public:
 int main(int argc, char** argv)
 {
 	printHeader(L"Задание 2. Паттерн «Наблюдатель»");
-	
 
+	Subject sub;
+	
+	WarningObs warning(&sub);
+	ErrorObs error(&sub, "error.txt");
+	FatalErrorObs fatalError(&sub, "f_error.txt");
+	
+	sub.VeryImportantWork();
 	
 	std::wcout << "\n";
 	return 0;
